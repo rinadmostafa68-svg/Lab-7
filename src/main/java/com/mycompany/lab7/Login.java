@@ -28,18 +28,18 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        email = new javax.swing.JTextField();
+        textemail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         mail = new javax.swing.JLabel();
-        password = new javax.swing.JTextField();
+        textPassword = new javax.swing.JTextField();
         login = new javax.swing.JButton();
         signup = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        email.addActionListener(new java.awt.event.ActionListener() {
+        textemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
+                textemailActionPerformed(evt);
             }
         });
 
@@ -49,9 +49,9 @@ public class Login extends javax.swing.JFrame {
         mail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         mail.setText("Email");
 
-        password.addActionListener(new java.awt.event.ActionListener() {
+        textPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
+                textPasswordActionPerformed(evt);
             }
         });
 
@@ -63,6 +63,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         signup.setText("signup");
+        signup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,11 +83,11 @@ public class Login extends javax.swing.JFrame {
                         .addGap(43, 43, 43))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textemail, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(79, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -94,11 +99,11 @@ public class Login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(107, 107, 107)
-                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(login)
@@ -114,9 +119,20 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
-        String email = textemail.getText();
+    private void textemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textemailActionPerformed
+        
+    }//GEN-LAST:event_textemailActionPerformed
+
+    private void textPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textPasswordActionPerformed
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+      String email = textemail.getText();
 String password = new String(textPassword.getPassword());
+if(email.isEmpty()||password.isEmpty()){
+     JOptionPane.showMessageDialog(this,"all fields required");
+}
 
 try {
     User user = AuthService.login(email, password);
@@ -133,16 +149,15 @@ try {
 
 } catch (Exception e) {
     JOptionPane.showMessageDialog(this, e.getMessage(), "Login Failed", JOptionPane.ERROR_MESSAGE);
-}
-    }//GEN-LAST:event_emailActionPerformed
-
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
-
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        // TODO add your handling code here:
+}  // TODO add your handling code here:
     }//GEN-LAST:event_loginActionPerformed
+
+    private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
+      signup s =new signup();
+      s.setVisible(true);
+       this.setVisible(false);
+      // TODO add your handling code here:
+    }//GEN-LAST:event_signupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,11 +195,11 @@ try {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton login;
     private javax.swing.JLabel mail;
-    private javax.swing.JTextField password;
     private javax.swing.JButton signup;
+    private javax.swing.JTextField textPassword;
+    private javax.swing.JTextField textemail;
     // End of variables declaration//GEN-END:variables
 }
