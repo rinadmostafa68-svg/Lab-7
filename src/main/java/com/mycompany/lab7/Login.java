@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.lab7;
+
 import com.mycompany.lab7.*;
 import javax.swing.JOptionPane;
 
@@ -120,7 +121,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void textemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textemailActionPerformed
-        
+
     }//GEN-LAST:event_textemailActionPerformed
 
     private void textPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPasswordActionPerformed
@@ -128,35 +129,35 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_textPasswordActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-      String email = textemail.getText();
-String password = new String(textPassword.getPassword());
-if(email.isEmpty()||password.isEmpty()){
-     JOptionPane.showMessageDialog(this,"all fields required");
-}
+        String email = textemail.getText();
+        String password = textPassword.getText();
+        if (email.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "all fields required");
+        }
 
-try {
-    User user = AuthService.login(email, password);
+        try {
+            User user = AuthService.login(email, password);
 
-    if (user.getRole().equalsIgnoreCase("student")) {
-        StudentDashboard s = new StudentDashboard((Student) user);
-        s.setVisible(true);
-    } else if (user.getRole().equalsIgnoreCase("instructor")) {
-        InstructorDashboard i = new InstructorDashboard((Instructor) user);
-        i.setVisible(true);
-    }
+            if (user.getRole().equalsIgnoreCase("student")) {
+                StudentDashboard s = new StudentDashboard((Student) user);
+                s.setVisible(true);
+            } else if (user.getRole().equalsIgnoreCase("instructor")) {
+                InstructorDashboard i = new InstructorDashboard((Instructor) user);
+                i.setVisible(true);
+            }
 
-    this.setVisible(false);
+            this.setVisible(false);
 
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(this, e.getMessage(), "Login Failed", JOptionPane.ERROR_MESSAGE);
-}  // TODO add your handling code here:
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Login Failed", JOptionPane.ERROR_MESSAGE);
+        }  // TODO add your handling code here:
     }//GEN-LAST:event_loginActionPerformed
 
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
-      signup s =new signup();
-      s.setVisible(true);
-       this.setVisible(false);
-      // TODO add your handling code here:
+        signup s = new signup();
+        s.setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
     }//GEN-LAST:event_signupActionPerformed
 
     /**
